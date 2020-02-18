@@ -1,0 +1,19 @@
+-- Used to set up a fresh database for solving equations
+CREATE SCHEMA equationsguesses
+
+CREATE TABLE equationguesses.Equation(
+	ID INT NOT NULL AUTO_INCREMENT,
+    Equation varchar(1000) NOT NULL,
+    R4 INT,
+    EquationNumber INT,
+    PRIMARY KEY(ID)
+);
+
+-- Delete all equations
+DELETE FROM equationguesses.equation WHERE ID > 0;
+
+-- Get number of equations in table
+SELECT COUNT(*) FROM equationguesses.equation;
+
+-- Get size of equation table
+SELECT table_name AS tablename, round(((data_length + index_length) / 1024 / 1024), 2) as size FROM information_schema.TABLES WHERE table_schema = "equationguesses" ORDER BY size DESC;
